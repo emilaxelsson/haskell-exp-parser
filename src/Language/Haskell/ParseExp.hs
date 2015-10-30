@@ -117,17 +117,13 @@ expression = do
 parseExp :: String -> Either String Exp
 parseExp str = case [expr | (expr,"") <- readP_to_S expression str] of
     [expr] -> return expr
-    _ -> fail $ unlines
-      [ "parseExp: cannot parse '" ++ str ++ "'"
-      , "Note: parseExp only supports a limited subset of Haskell."
-      ]
+    _ -> fail $ "parseExp: cannot parse '" ++ str ++ "'"
+             ++ " (parseExp only supports a limited subset of Haskell)"
 
 -- | Parse a Haskell pattern (the supported subset is given above)
 parsePat :: String -> Either String Pat
 parsePat str = case [pat | (pat,"") <- readP_to_S name str] of
     [pat] -> return (VarP pat)
-    _ -> fail $ unlines
-      [ "parsePat: cannot parse '" ++ str ++ "'"
-      , "Note: parsePat only supports a limited subset of Haskell."
-      ]
+    _ -> fail $ "parsePat: cannot parse '" ++ str ++ "'"
+             ++ " (parsePat only supports a limited subset of Haskell)"
 
