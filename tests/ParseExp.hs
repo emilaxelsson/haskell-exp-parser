@@ -11,9 +11,16 @@ import Language.Haskell.ParseExp
 
 
 
+fixNegLits :: Exp -> Exp
+fixNegLits = everywhere (mkT trans)
+  where
+    trans (LitE (IntegerL l))
+        | l < 0 = AppE (VarE (mkName "negate")) (LitE (IntegerL (negate l)))
+    trans e = e
+
 parse :: String -> Exp
 parse str = case parseExp str of
-    Right exp -> exp
+    Right exp -> fixNegLits exp
     Left msg  -> error msg
 
 dequalify :: Exp -> Exp
