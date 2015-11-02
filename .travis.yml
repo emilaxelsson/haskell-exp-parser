@@ -24,8 +24,8 @@ script:
  - cabal test
  - cabal check
  - cabal sdist
- - SRC_TGZ=$(cabal info . | awk '{print $2;exit}').tar.gz &&
-   (cd dist && cabal configure --disable-optimization --enable-test && cabal build && cabal install --disable-optimization --force-reinstalls "$SRC_TGZ")
+ - SRC_TGZ=$(cabal info . | awk '{print $2;exit}') &&
+   (cd dist && cabal unpack "$SRC_TGZ".tar.gz && cd "$SRC_TGZ" && cabal configure --disable-optimization --enable-test && cabal build && cabal install --disable-optimization --force-reinstalls)
 
 matrix:
   allow_failures:
