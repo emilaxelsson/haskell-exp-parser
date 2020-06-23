@@ -1,5 +1,5 @@
 name:           haskell-exp-parser
-version:        0.1.1
+version:        0.1.2
 synopsis:       Simple parser parser from Haskell to TemplateHaskell expressions
 description:    This package defines a simple parser for a subset of Haskell expressions and patterns to the TemplateHaskell AST.
                 .
