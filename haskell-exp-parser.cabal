@@ -1,5 +1,5 @@
 name:           haskell-exp-parser
-version:        0.1.2
+version:        0.1.3
 synopsis:       Simple parser parser from Haskell to TemplateHaskell expressions
 description:    This package defines a simple parser for a subset of Haskell expressions and patterns to the TemplateHaskell AST.
                 .
@@ -21,8 +21,8 @@ description:    This package defines a simple parser for a subset of Haskell exp
 license:        BSD3
 license-file:   LICENSE
 author:         Emil Axelsson
-maintainer:     emax@chalmers.se
-copyright:      Copyright (c) 2015, Emil Axelsson
+maintainer:     78emil@gmail.com
+copyright:      Copyright (c) 2015, 2020, Emil Axelsson
 homepage:       https://github.com/emilaxelsson/haskell-exp-parser
 bug-reports:    https://github.com/emilaxelsson/haskell-exp-parser/issues
 category:       Language
