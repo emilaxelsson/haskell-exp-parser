@@ -1,3 +1,5 @@
+{-# LANGUAGE CPP #-}
+
 -- | Simple parser for a subset of Haskell expressions and patterns to the
 -- TemplateHaskell AST
 --
@@ -25,6 +27,13 @@ import Language.Haskell.TH
 import Text.ParserCombinators.ReadP
 
 
+
+mk_tupE :: [Exp] -> Exp
+#if MIN_VERSION_template_haskell(2,16,0)
+mk_tupE = TupE . map Just
+#else
+mk_tupE = TupE
+#endif
 
 -- | Skip any amount of whitespace
 skipSpace :: ReadP ()
@@ -89,7 +98,7 @@ tuple = do
     case es of
         []  -> return $ ConE $ mkName "()"
         [e] -> return e
-        _   -> return $ TupE es
+        _   -> return $ mk_tupE es
 
 -- | Parse an expression that is not an application
 expPart :: Bool -> ReadP Exp
